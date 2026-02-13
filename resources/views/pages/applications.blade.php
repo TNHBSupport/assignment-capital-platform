@@ -28,9 +28,8 @@
                                 <th>Property</th>
                                 <th>State</th>
                                 <th>Fee Total</th>
-                                <th>Your Portion</th>
-                                <th>Advance Min</th>
-                                <th>Advance Max</th>
+                                <th>Advance Range</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,9 +43,10 @@
                                     <td>{{ $app->propertyAddress }}</td>
                                     <td>{{ $app->state }}</td>
                                     <td>${{ number_format((float) $app->assignmentFee, 2) }}</td>
-                                    <td>${{ number_format((float) $app->yourPortion, 2) }}</td>
-                                    <td>${{ number_format((float) $app->advanceRequestedMin, 2) }}</td>
-                                    <td>${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
+                                    <td>${{ number_format((float) $app->advanceRequestedMin, 2) }} - ${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-outline-primary" href="{{ route('applications.show', $app) }}">View</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

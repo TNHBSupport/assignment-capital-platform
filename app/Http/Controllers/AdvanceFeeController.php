@@ -117,4 +117,12 @@ class AdvanceFeeController extends Controller
 
         return view('pages.applications', compact('applications'));
     }
+
+    /**
+     * Temporary detail view for a single application
+     */
+    public function showApplication(DealApplication $application)
+    {
+        return view('pages.application-detail', compact('application'));
+    }
 }

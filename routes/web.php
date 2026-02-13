@@ -14,3 +14,4 @@ Route::get('/assessment-fee', [AdvanceFeeController::class, 'show'])->name('asse
 
 // Temporary admin view (remove or protect before production)
 Route::get('/admin/applications', [AdvanceFeeController::class, 'index'])->name('applications.index');
+Route::get('/admin/applications/{application}', [AdvanceFeeController::class, 'showApplication'])->name('applications.show');
