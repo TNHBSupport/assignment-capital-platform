@@ -11,3 +11,6 @@ Route::post('/advance-fee', [AdvanceFeeController::class, 'submit'])->name('adva
 
 // Assessment Fee (alias to Advance Fee form)
 Route::get('/assessment-fee', [AdvanceFeeController::class, 'show'])->name('assessment-fee.show');
+
+// Temporary admin view (remove or protect before production)
+Route::get('/admin/applications', [AdvanceFeeController::class, 'index'])->name('applications.index');

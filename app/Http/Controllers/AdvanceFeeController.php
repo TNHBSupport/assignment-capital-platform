@@ -107,4 +107,14 @@ class AdvanceFeeController extends Controller
         return redirect()->route('advance-fee.show')
             ->with('success', 'Your deal has been submitted successfully! Reference #' . $application->id);
     }
+
+    /**
+     * Temporary list of submitted applications
+     */
+    public function index()
+    {
+        $applications = DealApplication::latest()->paginate(20);
+
+        return view('pages.applications', compact('applications'));
+    }
 }
