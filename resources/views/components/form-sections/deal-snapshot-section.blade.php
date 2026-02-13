@@ -19,7 +19,7 @@
 
         <div class="col-md-4">
             <label class="form-label req">Projected Closing Date</label>
-            <input name="closingDate" id="closingDate" type="date" class="form-control" value="{{ old('closingDate') }}" required />
+            <input name="closingDate" id="closingDate" type="date" class="form-control" value="{{ old('closingDate', now()->toDateString()) }}" required />
             <div class="invalid-feedback">Please select a date.</div>
         </div>
 
