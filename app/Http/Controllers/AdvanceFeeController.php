@@ -43,9 +43,9 @@ class AdvanceFeeController extends Controller
 
             // Assignment Fee & Numbers
             'assignmentFee' => 'required|numeric|min:0',
-            'yourPortion' => 'required|numeric|min:0',
-            'advanceRequestedMin' => 'required|numeric|min:0',
-            'advanceRequestedMax' => 'required|numeric|min:0|gte:advanceRequestedMin',
+            'yourPortion' => 'required|numeric|min:0|lte:assignmentFee',
+            'advanceRequestedMin' => 'required|numeric|min:0|lte:yourPortion',
+            'advanceRequestedMax' => 'required|numeric|min:0|gte:advanceRequestedMin|lte:yourPortion',
             'fundingWhen' => 'required|string|max:100',
             'sellerContractPrice' => 'nullable|numeric|min:0',
             'endBuyerPrice' => 'nullable|numeric|min:0',

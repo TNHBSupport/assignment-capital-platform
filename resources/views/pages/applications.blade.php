@@ -10,6 +10,10 @@
                 <h1 class="h4 fw-bold mb-1">Submitted Applications</h1>
                 <p class="text-muted mb-0">Temporary view for reviewing submissions.</p>
             </div>
+            <form method="POST" action="{{ route('admin.logout') }}">
+                @csrf
+                <button class="btn btn-outline-secondary btn-sm" type="submit">Sign Out</button>
+            </form>
         </div>
 
         <div class="card p-3 p-md-4 shadow-sm border-0">

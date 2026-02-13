@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvanceFeeController;
+use App\Http\Controllers\AdminAuthController;
 
 Route::get('/', [AdvanceFeeController::class, 'show'])->name('home');
 
@@ -13,5 +14,11 @@ Route::post('/advance-fee', [AdvanceFeeController::class, 'submit'])->name('adva
 Route::get('/assessment-fee', [AdvanceFeeController::class, 'show'])->name('assessment-fee.show');
 
 // Temporary admin view (remove or protect before production)
-Route::get('/admin/applications', [AdvanceFeeController::class, 'index'])->name('applications.index');
-Route::get('/admin/applications/{application}', [AdvanceFeeController::class, 'showApplication'])->name('applications.show');
+Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+Route::middleware('temp.admin')->group(function () {
+    Route::get('/admin/applications', [AdvanceFeeController::class, 'index'])->name('applications.index');
+    Route::get('/admin/applications/{application}', [AdvanceFeeController::class, 'showApplication'])->name('applications.show');
+});

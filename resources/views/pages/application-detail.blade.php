@@ -10,8 +10,12 @@
                 <h1 class="h4 fw-bold mb-1">Application #{{ $application->id }}</h1>
                 <p class="text-muted mb-0">Submitted {{ $application->created_at?->format('Y-m-d H:i') }}</p>
             </div>
-            <div>
+            <div class="d-flex gap-2">
                 <a class="btn btn-outline-secondary" href="{{ route('applications.index') }}">Back to list</a>
+                <form method="POST" action="{{ route('admin.logout') }}">
+                    @csrf
+                    <button class="btn btn-outline-secondary" type="submit">Sign Out</button>
+                </form>
             </div>
         </div>
 
