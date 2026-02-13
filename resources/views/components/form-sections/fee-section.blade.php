@@ -57,12 +57,12 @@
             <div class="invalid-feedback">Please select timing.</div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label class="form-label">Seller Contract Price ($)</label>
             <input name="sellerContractPrice" id="sellerContractPrice" class="form-control @error('sellerContractPrice') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('sellerContractPrice') }}" placeholder="Optional" />
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label class="form-label">End Buyer Purchase Price ($)</label>
             <input name="endBuyerPrice" id="endBuyerPrice" class="form-control @error('endBuyerPrice') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('endBuyerPrice') }}" placeholder="Optional" />
         </div>
