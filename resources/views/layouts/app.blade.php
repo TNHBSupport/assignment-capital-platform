@@ -9,6 +9,7 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
 
     <!-- Custom Styles -->
     @stack('styles')
@@ -18,9 +19,11 @@
     @if (request()->is('admin/*'))
         <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
             <div class="container">
-                <a class="navbar-brand fw-semibold" href="/">Assignment Capital</a>
+                <a class="navbar-brand fw-semibold" href="/"><i class="bi bi-building"></i> Assignment Capital</a>
                 <div class="ms-auto">
-                    <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/">Website</a>
+                    <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-box-arrow-up-right"></i> Website
+                    </a>
                 </div>
             </div>
         </nav>

@@ -11,10 +11,14 @@
                 <p class="text-muted mb-0">Submitted {{ $application->created_at?->format('Y-m-d H:i') }}</p>
             </div>
             <div class="d-flex gap-2">
-                <a class="btn btn-outline-secondary" href="{{ route('applications.index') }}">Back to list</a>
+                <a class="btn btn-outline-secondary" href="{{ route('applications.index') }}">
+                    <i class="bi bi-arrow-left"></i> Back to list
+                </a>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
-                    <button class="btn btn-outline-secondary" type="submit">Sign Out</button>
+                    <button class="btn btn-outline-danger" type="submit">
+                        <i class="bi bi-box-arrow-right"></i> Sign Out
+                    </button>
                 </form>
             </div>
         </div>

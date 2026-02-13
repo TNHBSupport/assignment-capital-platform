@@ -12,7 +12,9 @@
             </div>
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
-                <button class="btn btn-outline-secondary btn-sm" type="submit">Sign Out</button>
+                <button class="btn btn-outline-danger btn-sm" type="submit">
+                    <i class="bi bi-box-arrow-right"></i> Sign Out
+                </button>
             </form>
         </div>
 
@@ -65,11 +67,15 @@
                                     <td>${{ number_format((float) $app->advanceRequestedMin, 2) }} - ${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
                                     <td class="text-end">
                                         <div class="d-inline-flex align-items-center gap-2">
-                                            <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View</a>
+                                            <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">
+                                                <i class="bi bi-eye"></i> View
+                                            </a>
                                             <form method="POST" action="{{ route('applications.destroy', $app) }}" class="js-delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                                <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </button>
                                             </form>
                                         </div>
                                     </td>

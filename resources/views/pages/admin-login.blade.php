@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
                 <div class="card p-4 shadow-sm border-0">
-                    <h1 class="h5 fw-bold mb-3">Admin Login</h1>
+                    <h1 class="h5 fw-bold mb-3"><i class="bi bi-shield-lock"></i> Admin Login</h1>
 
                     @if (session('error'))
                         <div class="alert alert-danger" role="alert">
@@ -32,7 +32,7 @@
                             <label class="form-label">Password</label>
                             <input class="form-control" type="password" name="password" required />
                         </div>
-                        <button class="btn btn-primary w-100" type="submit">Sign In</button>
+                        <button class="btn btn-primary w-100" type="submit"><i class="bi bi-box-arrow-in-right"></i> Sign In</button>
                     </form>
                 </div>
             </div>
