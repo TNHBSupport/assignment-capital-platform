@@ -19,7 +19,7 @@
         <div class="container">
             <a class="navbar-brand fw-semibold" href="/">Assignment Capital</a>
             <div class="ms-auto">
-                <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/admin/applications">Website</a>
+                <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/">Website</a>
             </div>
         </div>
     </nav>
