@@ -48,49 +48,20 @@ if (ownRealEstate) {
 const form = document.getElementById('dealForm');
 const thankYouModalEl = document.getElementById('thankYouModal');
 
-if (form && thankYouModalEl) {
-    const thankYouModal = new bootstrap.Modal(thankYouModalEl);
+if (form) {
+    if (thankYouModalEl) {
+        new bootstrap.Modal(thankYouModalEl);
+    }
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
+    form.addEventListener('submit', (e) => {
         // Trigger conditional logic state
         setSplitVisibility();
         setOwnRealEstateVisibility();
 
         if (!form.checkValidity()) {
+            e.preventDefault();
             e.stopPropagation();
             form.classList.add('was-validated');
-            return;
         }
-
-        // Submit form via AJAX or standard form submission
-        // For now, we'll use standard form submission
-        // Uncomment below to use AJAX instead:
-        /*
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                }
-            });
-
-            if (response.ok) {
-                thankYouModal.show();
-                form.reset();
-                form.classList.remove('was-validated');
-                splitWrap.classList.add('d-none');
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-        }
-        */
-
-        // Standard form submission (remove this if using AJAX)
-        form.submit();
     });
 }

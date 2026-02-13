@@ -13,6 +13,23 @@
 <!-- MAIN -->
 <main class="py-5" id="apply">
     <div class="container">
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <div class="fw-semibold mb-1">Please fix the errors below.</div>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row g-4">
             <!-- FORM -->
             <div class="col-lg-8">
