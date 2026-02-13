@@ -92,7 +92,7 @@
 
         <div class="col-md-4 d-none" id="ownRealEstateDetailsWrap">
             <label class="form-label req">Add Details</label>
-            <input name="ownRealEstateDetails" id="ownRealEstateDetails" class="form-control" placeholder="e.g., primary residence, rentals" />
+            <textarea name="ownRealEstateDetails" id="ownRealEstateDetails" class="form-control" rows="3" placeholder="e.g., primary residence, rentals"></textarea>
             <div class="invalid-feedback">Please add details.</div>
         </div>
     </div>
