@@ -5,22 +5,22 @@
     </div>
 
     <div class="row g-3">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label class="form-label">Purchase Contract</label>
             <input name="purchaseContract" class="form-control @error('purchaseContract') is-invalid @enderror" type="file" />
             <div class="form-text">PDF/JPG/PNG.</div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label class="form-label">Assignment Agreement</label>
             <input name="assignmentAgreement" class="form-control @error('assignmentAgreement') is-invalid @enderror" type="file" />
             <div class="form-text">PDF/JPG/PNG.</div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label class="form-label">Proof of Funds</label>
             <input name="proofOfFunds" class="form-control @error('proofOfFunds') is-invalid @enderror" type="file" />
             <div class="form-text">PDF/JPG/PNG.</div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label class="form-label">JV Agreement</label>
             <input name="jvAgreement" class="form-control @error('jvAgreement') is-invalid @enderror" type="file" />
             <div class="form-text">PDF/JPG/PNG.</div>
