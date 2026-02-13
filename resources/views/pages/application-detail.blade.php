@@ -15,11 +15,41 @@
             </div>
         </div>
 
-        <div class="card p-3 p-md-4">
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="p-3 rounded-3 bg-light border h-100">
+                    <div class="small text-muted">Total Fee</div>
+                    <div class="h5 mb-0 fw-bold">${{ number_format((float) $application->assignmentFee, 2) }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 rounded-3 bg-light border h-100">
+                    <div class="small text-muted">Your Portion</div>
+                    <div class="h5 mb-0 fw-bold">${{ number_format((float) $application->yourPortion, 2) }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 rounded-3 bg-light border h-100">
+                    <div class="small text-muted">Advance Range</div>
+                    <div class="h6 mb-0 fw-bold">${{ number_format((float) $application->advanceRequestedMin, 2) }} - ${{ number_format((float) $application->advanceRequestedMax, 2) }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 rounded-3 bg-light border h-100">
+                    <div class="small text-muted">Closing Date</div>
+                    <div class="h6 mb-0 fw-bold">{{ $application->closingDate?->format('Y-m-d') }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-3 p-md-4 shadow-sm border-0">
             <div class="row g-4">
                 <div class="col-12">
-                    <h2 class="h6 fw-bold mb-2">Contact</h2>
-                    <div class="row g-2">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="h6 fw-bold mb-0">Contact</h2>
+                        <span class="badge bg-secondary">Required</span>
+                    </div>
+                    <div class="row g-2 text-muted">
                         <div class="col-md-4"><strong>Name:</strong> {{ $application->fullName }}</div>
                         <div class="col-md-4"><strong>Company:</strong> {{ $application->companyName ?? '-' }}</div>
                         <div class="col-md-4"><strong>Role:</strong> {{ $application->role }}</div>
@@ -30,8 +60,12 @@
                 </div>
 
                 <div class="col-12">
-                    <h2 class="h6 fw-bold mb-2">Deal Snapshot</h2>
-                    <div class="row g-2">
+                    <hr class="my-1" />
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="h6 fw-bold mb-0">Deal Snapshot</h2>
+                        <span class="badge bg-secondary">Required</span>
+                    </div>
+                    <div class="row g-2 text-muted">
                         <div class="col-md-8"><strong>Property:</strong> {{ $application->propertyAddress }}</div>
                         <div class="col-md-4"><strong>State:</strong> {{ $application->state }}</div>
                         <div class="col-md-4"><strong>Closing Date:</strong> {{ $application->closingDate?->format('Y-m-d') }}</div>
@@ -44,8 +78,12 @@
                 </div>
 
                 <div class="col-12">
-                    <h2 class="h6 fw-bold mb-2">Assignment Fee & Numbers</h2>
-                    <div class="row g-2">
+                    <hr class="my-1" />
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="h6 fw-bold mb-0">Assignment Fee & Numbers</h2>
+                        <span class="badge bg-secondary">Required</span>
+                    </div>
+                    <div class="row g-2 text-muted">
                         <div class="col-md-4"><strong>Total Fee:</strong> ${{ number_format((float) $application->assignmentFee, 2) }}</div>
                         <div class="col-md-4"><strong>Your Portion:</strong> ${{ number_format((float) $application->yourPortion, 2) }}</div>
                         <div class="col-md-4"><strong>Funding When:</strong> {{ $application->fundingWhen }}</div>
@@ -60,8 +98,12 @@
                 </div>
 
                 <div class="col-12">
-                    <h2 class="h6 fw-bold mb-2">Deal Strength & Verification</h2>
-                    <div class="row g-2">
+                    <hr class="my-1" />
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="h6 fw-bold mb-0">Deal Strength & Verification</h2>
+                        <span class="badge bg-secondary">Required</span>
+                    </div>
+                    <div class="row g-2 text-muted">
                         <div class="col-md-4"><strong>EMD Amount:</strong> ${{ number_format((float) $application->emdAmount, 2) }}</div>
                         <div class="col-md-4"><strong>EMD Cleared:</strong> {{ $application->emdCleared }}</div>
                         <div class="col-md-4"><strong>EMD Who:</strong> {{ $application->emdWho ?? '-' }}</div>
@@ -76,12 +118,16 @@
                 </div>
 
                 <div class="col-12">
-                    <h2 class="h6 fw-bold mb-2">Documents</h2>
-                    <div class="row g-2">
-                        <div class="col-md-3"><strong>Purchase Contract:</strong> {!! $application->purchaseContract ? '<a href="' . asset('storage/' . $application->purchaseContract) . '" target="_blank">View</a>' : '-' !!}</div>
-                        <div class="col-md-3"><strong>Assignment Agreement:</strong> {!! $application->assignmentAgreement ? '<a href="' . asset('storage/' . $application->assignmentAgreement) . '" target="_blank">View</a>' : '-' !!}</div>
-                        <div class="col-md-3"><strong>Proof of Funds:</strong> {!! $application->proofOfFunds ? '<a href="' . asset('storage/' . $application->proofOfFunds) . '" target="_blank">View</a>' : '-' !!}</div>
-                        <div class="col-md-3"><strong>JV Agreement:</strong> {!! $application->jvAgreement ? '<a href="' . asset('storage/' . $application->jvAgreement) . '" target="_blank">View</a>' : '-' !!}</div>
+                    <hr class="my-1" />
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="h6 fw-bold mb-0">Documents</h2>
+                        <span class="badge bg-secondary">Optional</span>
+                    </div>
+                    <div class="row g-2 text-muted">
+                        <div class="col-md-3"><strong>Purchase Contract:</strong> {!! $application->purchaseContract ? '<a class="link-primary" href="' . asset('storage/' . $application->purchaseContract) . '" target="_blank">Open</a>' : '-' !!}</div>
+                        <div class="col-md-3"><strong>Assignment Agreement:</strong> {!! $application->assignmentAgreement ? '<a class="link-primary" href="' . asset('storage/' . $application->assignmentAgreement) . '" target="_blank">Open</a>' : '-' !!}</div>
+                        <div class="col-md-3"><strong>Proof of Funds:</strong> {!! $application->proofOfFunds ? '<a class="link-primary" href="' . asset('storage/' . $application->proofOfFunds) . '" target="_blank">Open</a>' : '-' !!}</div>
+                        <div class="col-md-3"><strong>JV Agreement:</strong> {!! $application->jvAgreement ? '<a class="link-primary" href="' . asset('storage/' . $application->jvAgreement) . '" target="_blank">Open</a>' : '-' !!}</div>
                     </div>
                     <div class="text-muted small mt-2">If a link doesn't open, ensure `php artisan storage:link` is set on the server.</div>
                 </div>

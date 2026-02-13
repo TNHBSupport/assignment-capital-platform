@@ -12,13 +12,23 @@
             </div>
         </div>
 
-        <div class="card p-3 p-md-4">
+        <div class="card p-3 p-md-4 shadow-sm border-0">
             @if($applications->count() === 0)
                 <div class="text-muted">No applications found.</div>
             @else
+                <div class="d-flex flex-wrap gap-3 mb-3">
+                    <div class="px-3 py-2 rounded-3 bg-light border">
+                        <div class="small text-muted">Total on this page</div>
+                        <div class="fw-semibold">{{ $applications->count() }}</div>
+                    </div>
+                    <div class="px-3 py-2 rounded-3 bg-light border">
+                        <div class="small text-muted">Latest Submission</div>
+                        <div class="fw-semibold">{{ optional($applications->first())->created_at?->format('Y-m-d H:i') ?? '-' }}</div>
+                    </div>
+                </div>
                 <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead>
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
                             <tr>
                                 <th>ID</th>
                                 <th>Submitted</th>
@@ -29,7 +39,7 @@
                                 <th>State</th>
                                 <th>Fee Total</th>
                                 <th>Advance Range</th>
-                                <th>Action</th>
+                                <th class="text-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,8 +54,8 @@
                                     <td>{{ $app->state }}</td>
                                     <td>${{ number_format((float) $app->assignmentFee, 2) }}</td>
                                     <td>${{ number_format((float) $app->advanceRequestedMin, 2) }} - ${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-outline-primary" href="{{ route('applications.show', $app) }}">View</a>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View Details</a>
                                     </td>
                                 </tr>
                             @endforeach
