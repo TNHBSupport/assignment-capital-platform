@@ -5,7 +5,7 @@
     </div>
 
     <div class="row g-3">
-        <div class="col-md-6">
+        <div class="col-12">
             <label class="form-label req">Are you splitting this assignment fee?</label>
             <select name="splittingFee" id="splittingFee" class="form-select @error('splittingFee') is-invalid @enderror" required>
                 <option value="" disabled {{ old('splittingFee') ? '' : 'selected' }}>Select…</option>
@@ -15,22 +15,34 @@
             <div class="invalid-feedback">Please select an option.</div>
         </div>
 
-        <div class="col-md-6 {{ old('splittingFee') === 'Yes' ? '' : 'd-none' }}" id="splitDetailsWrap">
+        <div class="col-12 {{ old('splittingFee') === 'Yes' ? '' : 'd-none' }}" id="splitDetailsWrap">
             <label class="form-label req">Your net portion (%, or $ amount)</label>
             <input name="netPortion" id="netPortion" class="form-control @error('netPortion') is-invalid @enderror" value="{{ old('netPortion') }}" placeholder="e.g., 50% or $10,000" />
             <div class="invalid-feedback">Please enter your net portion.</div>
         </div>
 
-        <div class="col-md-4">
-            <label class="form-label req">Projected Total Fee ($)</label>
+        <div class="col-md-3">
+            <label class="form-label req">Total Fee ($)</label>
             <input name="assignmentFee" id="assignmentFee" class="form-control @error('assignmentFee') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('assignmentFee') }}" required />
             <div class="invalid-feedback">Enter the projected assignment fee total.</div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label class="form-label req">Your Portion ($)</label>
             <input name="yourPortion" id="yourPortion" class="form-control @error('yourPortion') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('yourPortion') }}" required />
             <div class="invalid-feedback">Enter your portion.</div>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label req">Advance Min ($)</label>
+            <input name="advanceRequestedMin" id="advanceRequestedMin" class="form-control @error('advanceRequestedMin') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('advanceRequestedMin') }}" required />
+            <div class="invalid-feedback">Enter the minimum amount you want advanced.</div>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label req">Advance Max ($)</label>
+            <input name="advanceRequestedMax" id="advanceRequestedMax" class="form-control @error('advanceRequestedMax') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('advanceRequestedMax') }}" required />
+            <div class="invalid-feedback">Enter the maximum amount you want advanced.</div>
         </div>
 
         <div class="col-md-4">
@@ -43,18 +55,6 @@
                 <option {{ old('fundingWhen') === 'This week' ? 'selected' : '' }}>This week</option>
             </select>
             <div class="invalid-feedback">Please select timing.</div>
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label req">Minimum Advance Requested ($)</label>
-            <input name="advanceRequestedMin" id="advanceRequestedMin" class="form-control @error('advanceRequestedMin') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('advanceRequestedMin') }}" required />
-            <div class="invalid-feedback">Enter the minimum amount you want advanced.</div>
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label req">Maximum Advance Requested ($)</label>
-            <input name="advanceRequestedMax" id="advanceRequestedMax" class="form-control @error('advanceRequestedMax') is-invalid @enderror" type="number" min="0" step="1" value="{{ old('advanceRequestedMax') }}" required />
-            <div class="invalid-feedback">Enter the maximum amount you want advanced.</div>
         </div>
 
         <div class="col-md-6">
