@@ -20,6 +20,7 @@ function setSplitVisibility() {
 if (splittingFee) {
     splittingFee.addEventListener('change', setSplitVisibility);
 }
+setSplitVisibility();
 
 // Conditional real estate details
 const ownRealEstate = document.getElementById('ownRealEstate');
@@ -43,6 +44,7 @@ function setOwnRealEstateVisibility() {
 if (ownRealEstate) {
     ownRealEstate.addEventListener('change', setOwnRealEstateVisibility);
 }
+setOwnRealEstateVisibility();
 
 // Bootstrap validation + form submit handler
 const form = document.getElementById('dealForm');
