@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+class AdvanceFeeController extends Controller
+{
+    /**
+     * Display the advance fee application form
+     */
+    public function show()
+    {
+        return view('pages.advance-fee');
+    }
+
+    /**
+     * Handle the form submission
+     */
+    public function submit(Request $request)
+    {
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            // Contact
+            'fullName' => 'required|string|max:255',
+            'companyName' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'decisionMaker' => 'required|in:Yes,No',
+            'role' => 'required|string|max:100',
+
+            // Deal Snapshot
+            'propertyAddress' => 'required|string|max:500',
+            'state' => 'required|string|size:2',
+            'closingDate' => 'required|date|after:today',
+            'dealType' => 'required|string|max:100',
+            'buyerUnderContract' => 'required|in:Yes,No',
+            'titleOpened' => 'required|in:Yes,No,Not sure',
+            'titleCompanyName' => 'nullable|string|max:255',
+            'titleCompanyContact' => 'nullable|string|max:255',
+
+            // Assignment Fee & Numbers
+            'assignmentFee' => 'required|numeric|min:0',
+            'advanceRequested' => 'required|numeric|min:0',
+            'fundingWhen' => 'required|string|max:100',
+            'sellerContractPrice' => 'nullable|numeric|min:0',
+            'endBuyerPrice' => 'nullable|numeric|min:0',
+            'splittingFee' => 'required|in:Yes,No',
+            'netPortion' => 'required_if:splittingFee,Yes|nullable|string|max:100',
+            'useOfFunds' => 'nullable|string|max:255',
+
+            // Deal Strength & Verification
+            'emdAmount' => 'required|numeric|min:0',
+            'emdCleared' => 'required|in:Yes,No,Not sure',
+            'emdWho' => 'nullable|string|max:100',
+            'contractsExecuted' => 'required|in:Yes,No',
+            'buyerType' => 'nullable|string|max:100',
+            'titlePaybackAuth' => 'required|in:Yes,No,Not sure',
+            'contactTitleOk' => 'required|in:Yes,No',
+            'notes' => 'nullable|string|max:2000',
+
+            // Documents
+            'purchaseContract' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'assignmentAgreement' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'proofOfFunds' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = $validator->validated();
+
+        // Handle file uploads
+        if ($request->hasFile('purchaseContract')) {
+            $data['purchaseContract'] = $request->file('purchaseContract')->store('documents', 'public');
+        }
+
+        if ($request->hasFile('assignmentAgreement')) {
+            $data['assignmentAgreement'] = $request->file('assignmentAgreement')->store('documents', 'public');
+        }
+
+        if ($request->hasFile('proofOfFunds')) {
+            $data['proofOfFunds'] = $request->file('proofOfFunds')->store('documents', 'public');
+        }
+
+        // Log the submission (replace with database save or email notification)
+        Log::info('New Advance Fee Application', $data);
+
+        // TODO: Save to database
+        // DealApplication::create($data);
+
+        // TODO: Send email notification
+        // Mail::to('admin@example.com')->send(new NewDealApplicationMail($data));
+
+        // Redirect back with success message
+        return redirect()->route('advance-fee.show')
+            ->with('success', 'Your deal has been submitted successfully!');
+    }
+}

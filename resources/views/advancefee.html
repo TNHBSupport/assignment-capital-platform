@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assignment Fee Advance — Deal Submission</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    body { background: #f8f9fb; }
+    .hero {
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(13,110,253,.15), transparent 60%),
+                  radial-gradient(800px 400px at 90% 20%, rgba(25,135,84,.12), transparent 60%),
+                  #0b1220;
+      color: #fff;
+    }
+    .hero .badge { background: rgba(255,255,255,.12); }
+    .card { border: 0; box-shadow: 0 10px 30px rgba(15,23,42,.08); border-radius: 16px; }
+    .form-section-title { font-weight: 700; letter-spacing: .2px; }
+    .small-help { color: #6c757d; }
+    .sticky-cta { position: sticky; top: 16px; }
+    .req::after { content:" *"; color: #dc3545; font-weight: 700; }
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero py-5">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="badge rounded-pill px-3 py-2 mb-3">Assignment Fee Advance</span>
+          <h1 class="display-6 fw-bold mb-3">Get a portion of your assignment fee before closing.</h1>
+          <p class="lead mb-4">
+            Submit your deal details. If it qualifies, we’ll confirm with title and send terms fast.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <div class="bg-white bg-opacity-10 rounded-3 px-3 py-2">✅ Simple submission</div>
+            <div class="bg-white bg-opacity-10 rounded-3 px-3 py-2">✅ Title verification</div>
+            <div class="bg-white bg-opacity-10 rounded-3 px-3 py-2">✅ Payback at closing</div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h2 class="h5 mb-0 fw-bold text-dark">Quick Pre-Qual</h2>
+              <span class="text-success fw-semibold">~2 minutes</span>
+            </div>
+            <p class="small text-muted mb-3">Start here. More fields appear only if needed.</p>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label req text-dark">Full Name</label>
+                <input class="form-control" type="text" id="quickName" placeholder="John Smith" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label req text-dark">Phone</label>
+                <input class="form-control" type="tel" id="quickPhone" placeholder="(555) 555-5555" />
+              </div>
+              <div class="col-12">
+                <label class="form-label req text-dark">Email</label>
+                <input class="form-control" type="email" id="quickEmail" placeholder="you@email.com" />
+              </div>
+              <div class="col-12">
+                <label class="form-label req text-dark">Property Address</label>
+                <input class="form-control" type="text" id="quickAddress" placeholder="123 Main St, City, ST 12345" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label req text-dark">Projected Assignment Fee ($)</label>
+                <input class="form-control" type="number" id="quickFee" min="0" step="1" placeholder="20000" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label req text-dark">Advance Requested ($)</label>
+                <input class="form-control" type="number" id="quickAdvance" min="0" step="1" placeholder="6000" />
+              </div>
+
+              <div class="col-12 d-grid">
+                <a class="btn btn-primary btn-lg" href="#apply" id="startApplicationBtn">
+                  Continue Application
+                </a>
+              </div>
+              <div class="col-12">
+                <div class="small-help small">
+                  By submitting, you agree we may contact you and the title company to verify deal details.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="py-5" id="apply">
+    <div class="container">
+      <div class="row g-4">
+        <!-- FORM -->
+        <div class="col-lg-8">
+          <div class="card p-4 p-md-5">
+            <div class="mb-4">
+              <h2 class="h4 fw-bold mb-1">Deal Submission Form</h2>
+              <p class="text-muted mb-0">Complete the details below so we can verify and send terms.</p>
+            </div>
+
+            <form id="dealForm" class="needs-validation" novalidate>
+              <!-- CONTACT -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                  <div class="form-section-title">Contact</div>
+                  <span class="text-muted small">Required</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label req">Full Name</label>
+                    <input name="fullName" id="fullName" class="form-control" required />
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Company Name</label>
+                    <input name="companyName" id="companyName" class="form-control" placeholder="Optional" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label req">Email</label>
+                    <input name="email" id="email" type="email" class="form-control" required />
+                    <div class="invalid-feedback">Please enter a valid email.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label req">Phone</label>
+                    <input name="phone" id="phone" type="tel" class="form-control" required />
+                    <div class="invalid-feedback">Please enter a phone number.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label req">Are you the decision maker?</label>
+                    <select name="decisionMaker" id="decisionMaker" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label req">Your Role</label>
+                    <select name="role" id="role" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Wholesaler</option>
+                      <option>Dispo Company</option>
+                      <option>JV Partner</option>
+                      <option>Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your role.</div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <!-- DEAL SNAPSHOT -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                  <div class="form-section-title">Deal Snapshot</div>
+                  <span class="text-muted small">Required</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label req">Property Address</label>
+                    <input name="propertyAddress" id="propertyAddress" class="form-control" required />
+                    <div class="invalid-feedback">Please enter the property address.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">State</label>
+                    <input name="state" id="state" class="form-control" placeholder="e.g., TX" maxlength="2" required />
+                    <div class="invalid-feedback">Enter a 2-letter state.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">Projected Closing Date</label>
+                    <input name="closingDate" id="closingDate" type="date" class="form-control" required />
+                    <div class="invalid-feedback">Please select a date.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">Deal Type</label>
+                    <select name="dealType" id="dealType" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Assignment</option>
+                      <option>Double Close</option>
+                      <option>Novation / Wholetail</option>
+                      <option>Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please choose a deal type.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">Is the end buyer under contract?</label>
+                    <select name="buyerUnderContract" id="buyerUnderContract" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">Has title been opened?</label>
+                    <select name="titleOpened" id="titleOpened" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>Not sure</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Title Company Name</label>
+                    <input name="titleCompanyName" id="titleCompanyName" class="form-control" placeholder="Optional (recommended)" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Title Company Contact (Email or Phone)</label>
+                    <input name="titleCompanyContact" id="titleCompanyContact" class="form-control" placeholder="Optional (recommended)" />
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <!-- ASSIGNMENT FEE -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                  <div class="form-section-title">Assignment Fee & Numbers</div>
+                  <span class="text-muted small">Required</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label req">Projected Assignment Fee ($)</label>
+                    <input name="assignmentFee" id="assignmentFee" class="form-control" type="number" min="0" step="1" required />
+                    <div class="invalid-feedback">Enter the projected assignment fee.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">Advance Requested ($)</label>
+                    <input name="advanceRequested" id="advanceRequested" class="form-control" type="number" min="0" step="1" required />
+                    <div class="invalid-feedback">Enter the amount you want advanced.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">When do you need funds?</label>
+                    <select name="fundingWhen" id="fundingWhen" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Same day</option>
+                      <option>Within 24 hours</option>
+                      <option>Within 48 hours</option>
+                      <option>This week</option>
+                    </select>
+                    <div class="invalid-feedback">Please select timing.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Seller Contract Price ($)</label>
+                    <input name="sellerContractPrice" id="sellerContractPrice" class="form-control" type="number" min="0" step="1" placeholder="Optional" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">End Buyer Purchase Price ($)</label>
+                    <input name="endBuyerPrice" id="endBuyerPrice" class="form-control" type="number" min="0" step="1" placeholder="Optional" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">Are you splitting this assignment fee?</label>
+                    <select name="splittingFee" id="splittingFee" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>No</option>
+                      <option>Yes</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-6 d-none" id="splitDetailsWrap">
+                    <label class="form-label req">Your net portion (%, or $ amount)</label>
+                    <input name="netPortion" id="netPortion" class="form-control" placeholder="e.g., 50% or $10,000" />
+                    <div class="invalid-feedback">Please enter your net portion.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">What will you use the advance for?</label>
+                    <select name="useOfFunds" id="useOfFunds" class="form-select">
+                      <option value="" selected>Optional</option>
+                      <option>Marketing / Ads</option>
+                      <option>Earnest Money for another deal</option>
+                      <option>Paying Dispo / JV</option>
+                      <option>Business operations</option>
+                      <option>Personal / Emergency</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <!-- DEAL STRENGTH -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                  <div class="form-section-title">Deal Strength & Verification</div>
+                  <span class="text-muted small">Required</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label req">Earnest Money Deposited ($)</label>
+                    <input name="emdAmount" id="emdAmount" class="form-control" type="number" min="0" step="1" required />
+                    <div class="invalid-feedback">Enter EMD amount (enter 0 if none).</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label req">Has EMD cleared?</label>
+                    <select name="emdCleared" id="emdCleared" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>Not sure</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label">Who delivered EMD?</label>
+                    <select name="emdWho" id="emdWho" class="form-select">
+                      <option value="" selected>Optional</option>
+                      <option>End Buyer</option>
+                      <option>Me (Wholesaler)</option>
+                      <option>Dispo Company</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">Are all contracts fully executed?</label>
+                    <select name="contractsExecuted" id="contractsExecuted" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">End Buyer Purchase Type</label>
+                    <select name="buyerType" id="buyerType" class="form-select">
+                      <option value="" selected>Optional</option>
+                      <option>Cash</option>
+                      <option>Hard Money</option>
+                      <option>Conventional Financing</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">Authorize repayment from title at closing?</label>
+                    <select name="titlePaybackAuth" id="titlePaybackAuth" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>Not sure</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label req">May we contact title to verify the deal?</label>
+                    <select name="contactTitleOk" id="contactTitleOk" class="form-select" required>
+                      <option value="" selected disabled>Select…</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an option.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">Notes (Anything we should know?)</label>
+                    <textarea name="notes" id="notes" class="form-control" rows="4" placeholder="Optional details: inspection issues, title issues, JV structure, etc."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <!-- OPTIONAL UPLOADS (UI only; needs backend) -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                  <div class="form-section-title">Upload Documents (Optional)</div>
+                  <span class="text-muted small">Recommended</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label">Purchase Contract</label>
+                    <input name="purchaseContract" class="form-control" type="file" />
+                    <div class="form-text">PDF/JPG/PNG.</div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Assignment Agreement</label>
+                    <input name="assignmentAgreement" class="form-control" type="file" />
+                    <div class="form-text">PDF/JPG/PNG.</div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Proof of Funds</label>
+                    <input name="proofOfFunds" class="form-control" type="file" />
+                    <div class="form-text">PDF/JPG/PNG.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUBMIT -->
+              <div class="d-flex flex-column flex-sm-row gap-2 align-items-sm-center justify-content-between">
+                <div class="text-muted small">
+                  By submitting, you confirm the information provided is accurate to the best of your knowledge.
+                </div>
+                <button class="btn btn-success btn-lg" type="submit">
+                  Submit Deal
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="col-lg-4">
+          <div class="sticky-cta">
+            <div class="card p-4 mb-4">
+              <h3 class="h6 fw-bold mb-2">What happens next</h3>
+              <ol class="mb-0 small text-muted">
+                <li class="mb-2">We review your submission.</li>
+                <li class="mb-2">We verify the deal with title (if approved).</li>
+                <li class="mb-2">We send terms + agreement for signature.</li>
+                <li>Funds are advanced, repaid at closing.</li>
+              </ol>
+            </div>
+
+            <div class="card p-4">
+              <h3 class="h6 fw-bold mb-2">Common approval signals</h3>
+              <ul class="mb-0 small text-muted">
+                <li class="mb-2">End buyer signed + EMD delivered/cleared</li>
+                <li class="mb-2">Title open and reachable</li>
+                <li class="mb-2">Clear net portion (no confusion on splits)</li>
+                <li>Closing date within ~7–30 days</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- THANK YOU MODAL -->
+  <div class="modal fade" id="thankYouModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px;">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Deal Submitted</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-1">Thanks — we received your deal details.</p>
+          <p class="text-muted mb-0 small">
+            Next step: we’ll review and (if needed) contact the title company to verify.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Prefill main form from quick pre-qual
+    const startBtn = document.getElementById('startApplicationBtn');
+    startBtn.addEventListener('click', () => {
+      const map = [
+        ['quickName', 'fullName'],
+        ['quickEmail', 'email'],
+        ['quickPhone', 'phone'],
+        ['quickAddress', 'propertyAddress'],
+        ['quickFee', 'assignmentFee'],
+        ['quickAdvance', 'advanceRequested'],
+      ];
+      map.forEach(([from, to]) => {
+        const v = document.getElementById(from).value;
+        if (v) document.getElementById(to).value = v;
+      });
+    });
+
+    // Conditional split fields
+    const splittingFee = document.getElementById('splittingFee');
+    const splitWrap = document.getElementById('splitDetailsWrap');
+    const netPortion = document.getElementById('netPortion');
+
+    function setSplitVisibility() {
+      const isYes = splittingFee.value === 'Yes';
+      splitWrap.classList.toggle('d-none', !isYes);
+      if (isYes) {
+        netPortion.setAttribute('required', 'required');
+      } else {
+        netPortion.removeAttribute('required');
+        netPortion.value = '';
+        netPortion.classList.remove('is-invalid');
+      }
+    }
+    splittingFee.addEventListener('change', setSplitVisibility);
+
+    // Bootstrap validation + demo submit handler (replace with your backend endpoint)
+    const form = document.getElementById('dealForm');
+    const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Trigger conditional logic state
+      setSplitVisibility();
+
+      if (!form.checkValidity()) {
+        e.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+      }
+
+      // Build payload (files excluded here; use FormData for real upload)
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      // TODO: Replace this with your actual POST request
+      // Example:
+      // await fetch('https://your-api.com/lead', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // });
+
+      console.log('Submitted payload:', data);
+
+      // UX: show modal and reset
+      thankYouModal.show();
+      form.reset();
+      form.classList.remove('was-validated');
+      splitWrap.classList.add('d-none');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body {
+    background: #f8f9fb;
+}
+
+.hero {
+    background: radial-gradient(1200px 600px at 20% 10%, rgba(13,110,253,.15), transparent 60%),
+                radial-gradient(800px 400px at 90% 20%, rgba(25,135,84,.12), transparent 60%),
+                #0b1220;
+    color: #fff;
+}
+
+.hero .badge {
+    background: rgba(255,255,255,.12);
+}
+
+.card {
+    border: 0;
+    box-shadow: 0 10px 30px rgba(15,23,42,.08);
+    border-radius: 16px;
+}
+
+.form-section-title {
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+.small-help {
+    color: #6c757d;
+}
+
+.sticky-cta {
+    position: sticky;
+    top: 16px;
+}
+
+.req::after {
+    content: " *";
+    color: #dc3545;
+    font-weight: 700;
+}
