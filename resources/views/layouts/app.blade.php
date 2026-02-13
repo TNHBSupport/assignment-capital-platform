@@ -15,6 +15,14 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-semibold" href="/">Assignment Capital</a>
+            <div class="ms-auto">
+                <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/admin/applications">Home</a>
+            </div>
+        </div>
+    </nav>
     @yield('content')
 
     <!-- Bootstrap JS -->
