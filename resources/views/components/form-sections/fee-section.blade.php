@@ -6,7 +6,7 @@
 
     <div class="row g-3">
         <div class="col-md-4">
-            <label class="form-label req">Projected Assignment Fee Total ($)</label>
+            <label class="form-label req">Projected Total Fee ($)</label>
             <input name="assignmentFee" id="assignmentFee" class="form-control" type="number" min="0" step="1" required />
             <div class="invalid-feedback">Enter the projected assignment fee total.</div>
         </div>
