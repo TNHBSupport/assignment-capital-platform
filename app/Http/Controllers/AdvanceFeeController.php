@@ -43,6 +43,7 @@ class AdvanceFeeController extends Controller
 
             // Assignment Fee & Numbers
             'assignmentFee' => 'required|numeric|min:0',
+            'yourPortion' => 'required|numeric|min:0',
             'advanceRequested' => 'required|numeric|min:0',
             'fundingWhen' => 'required|string|max:100',
             'sellerContractPrice' => 'nullable|numeric|min:0',

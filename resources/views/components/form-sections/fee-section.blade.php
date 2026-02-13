@@ -6,9 +6,15 @@
 
     <div class="row g-3">
         <div class="col-md-4">
-            <label class="form-label req">Projected Assignment Fee ($)</label>
+            <label class="form-label req">Projected Assignment Fee Total ($)</label>
             <input name="assignmentFee" id="assignmentFee" class="form-control" type="number" min="0" step="1" required />
-            <div class="invalid-feedback">Enter the projected assignment fee.</div>
+            <div class="invalid-feedback">Enter the projected assignment fee total.</div>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label req">Your Portion ($)</label>
+            <input name="yourPortion" id="yourPortion" class="form-control" type="number" min="0" step="1" required />
+            <div class="invalid-feedback">Enter your portion.</div>
         </div>
 
         <div class="col-md-4">
