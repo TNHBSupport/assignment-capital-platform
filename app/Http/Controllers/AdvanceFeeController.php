@@ -34,7 +34,7 @@ class AdvanceFeeController extends Controller
             // Deal Snapshot
             'propertyAddress' => 'required|string|max:500',
             'state' => 'required|string|size:2',
-            'closingDate' => 'required|date|after:today',
+            'closingDate' => 'required|date|after_or_equal:today',
             'dealType' => 'required|string|max:100',
             'buyerUnderContract' => 'required|in:Yes,No',
             'titleOpened' => 'required|in:Yes,No,Not sure',
