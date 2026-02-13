@@ -19,7 +19,7 @@
         <div class="container">
             <a class="navbar-brand fw-semibold" href="/">Assignment Capital</a>
             <div class="ms-auto">
-                <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/admin/applications">Home</a>
+                <a class="btn btn-sm btn-outline-primary" href="https://assignmentfee.on-forge.com/admin/applications">Website</a>
             </div>
         </div>
     </nav>
@@ -27,6 +27,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom Scripts -->
     @stack('scripts')

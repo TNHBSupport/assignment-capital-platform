@@ -64,9 +64,9 @@
                                     <td>${{ number_format((float) $app->assignmentFee, 2) }}</td>
                                     <td>${{ number_format((float) $app->advanceRequestedMin, 2) }} - ${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
                                     <td class="text-end">
-                                        <div class="d-flex gap-2 justify-content-end">
-                                            <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View Details</a>
-                                            <form method="POST" action="{{ route('applications.destroy', $app) }}" onsubmit="return confirm('Delete this application?');">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View</a>
+                                            <form method="POST" action="{{ route('applications.destroy', $app) }}" class="js-delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
@@ -86,4 +86,27 @@
         </div>
     </div>
 </main>
+
+@push('scripts')
+<script>
+    document.querySelectorAll('.js-delete-form').forEach((form) => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Delete this application?',
+                text: 'This action can be undone by restoring from backups only.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#dc3545'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
+@endpush
 @endsection
