@@ -125,4 +125,15 @@ class AdvanceFeeController extends Controller
     {
         return view('pages.application-detail', compact('application'));
     }
+
+    /**
+     * Temporary delete for an application
+     */
+    public function destroy(DealApplication $application)
+    {
+        $application->delete();
+
+        return redirect()->route('applications.index')
+            ->with('success', 'Application deleted.');
+    }
 }

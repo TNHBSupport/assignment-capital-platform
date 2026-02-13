@@ -21,4 +21,5 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admi
 Route::middleware('temp.admin')->group(function () {
     Route::get('/admin/applications', [AdvanceFeeController::class, 'index'])->name('applications.index');
     Route::get('/admin/applications/{application}', [AdvanceFeeController::class, 'showApplication'])->name('applications.show');
+    Route::delete('/admin/applications/{application}', [AdvanceFeeController::class, 'destroy'])->name('applications.destroy');
 });

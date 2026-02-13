@@ -17,6 +17,11 @@
         </div>
 
         <div class="card p-3 p-md-4 shadow-sm border-0">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             @if($applications->count() === 0)
                 <div class="text-muted">No applications found.</div>
             @else
@@ -59,7 +64,14 @@
                                     <td>${{ number_format((float) $app->assignmentFee, 2) }}</td>
                                     <td>${{ number_format((float) $app->advanceRequestedMin, 2) }} - ${{ number_format((float) $app->advanceRequestedMax, 2) }}</td>
                                     <td class="text-end">
-                                        <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View Details</a>
+                                        <div class="d-flex gap-2 justify-content-end">
+                                            <a class="btn btn-sm btn-primary" href="{{ route('applications.show', $app) }}">View Details</a>
+                                            <form method="POST" action="{{ route('applications.destroy', $app) }}" onsubmit="return confirm('Delete this application?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
