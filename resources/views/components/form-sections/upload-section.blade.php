@@ -20,5 +20,10 @@
             <input name="proofOfFunds" class="form-control" type="file" />
             <div class="form-text">PDF/JPG/PNG.</div>
         </div>
+        <div class="col-md-4">
+            <label class="form-label">JV Agreement</label>
+            <input name="jvAgreement" class="form-control" type="file" />
+            <div class="form-text">PDF/JPG/PNG.</div>
+        </div>
     </div>
 </div>

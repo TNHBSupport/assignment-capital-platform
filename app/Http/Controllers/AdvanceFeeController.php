@@ -44,7 +44,8 @@ class AdvanceFeeController extends Controller
             // Assignment Fee & Numbers
             'assignmentFee' => 'required|numeric|min:0',
             'yourPortion' => 'required|numeric|min:0',
-            'advanceRequested' => 'required|numeric|min:0',
+            'advanceRequestedMin' => 'required|numeric|min:0',
+            'advanceRequestedMax' => 'required|numeric|min:0|gte:advanceRequestedMin',
             'fundingWhen' => 'required|string|max:100',
             'sellerContractPrice' => 'nullable|numeric|min:0',
             'endBuyerPrice' => 'nullable|numeric|min:0',
@@ -60,12 +61,15 @@ class AdvanceFeeController extends Controller
             'buyerType' => 'nullable|string|max:100',
             'titlePaybackAuth' => 'required|in:Yes,No,Not sure',
             'contactTitleOk' => 'required|in:Yes,No',
+            'ownRealEstate' => 'required|in:Yes,No',
+            'ownRealEstateDetails' => 'required_if:ownRealEstate,Yes|nullable|string|max:1000',
             'notes' => 'nullable|string|max:2000',
 
             // Documents
             'purchaseContract' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
             'assignmentAgreement' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
             'proofOfFunds' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'jvAgreement' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
 
         if ($validator->fails()) {
@@ -87,6 +91,10 @@ class AdvanceFeeController extends Controller
 
         if ($request->hasFile('proofOfFunds')) {
             $data['proofOfFunds'] = $request->file('proofOfFunds')->store('documents', 'public');
+        }
+
+        if ($request->hasFile('jvAgreement')) {
+            $data['jvAgreement'] = $request->file('jvAgreement')->store('documents', 'public');
         }
 
         // Log the submission (replace with database save or email notification)

@@ -79,5 +79,21 @@
             <label class="form-label">Notes (Anything we should know?)</label>
             <textarea name="notes" id="notes" class="form-control" rows="4" placeholder="Optional details: inspection issues, title issues, JV structure, etc."></textarea>
         </div>
+
+        <div class="col-md-8">
+            <label class="form-label req">Do you or anybody close to you own real estate (this will help us keep your assignment fee advance cost down)?</label>
+            <select name="ownRealEstate" id="ownRealEstate" class="form-select" required>
+                <option value="" selected disabled>Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <div class="invalid-feedback">Please select an option.</div>
+        </div>
+
+        <div class="col-md-4 d-none" id="ownRealEstateDetailsWrap">
+            <label class="form-label req">Add Details</label>
+            <input name="ownRealEstateDetails" id="ownRealEstateDetails" class="form-control" placeholder="e.g., primary residence, rentals" />
+            <div class="invalid-feedback">Please add details.</div>
+        </div>
     </div>
 </div>

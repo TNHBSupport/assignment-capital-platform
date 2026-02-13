@@ -1,22 +1,3 @@
-// Prefill main form from quick pre-qual
-const startBtn = document.getElementById('startApplicationBtn');
-if (startBtn) {
-    startBtn.addEventListener('click', () => {
-        const map = [
-            ['quickName', 'fullName'],
-            ['quickEmail', 'email'],
-            ['quickPhone', 'phone'],
-            ['quickAddress', 'propertyAddress'],
-            ['quickFee', 'assignmentFee'],
-            ['quickAdvance', 'advanceRequested'],
-        ];
-        map.forEach(([from, to]) => {
-            const v = document.getElementById(from).value;
-            if (v) document.getElementById(to).value = v;
-        });
-    });
-}
-
 // Conditional split fields
 const splittingFee = document.getElementById('splittingFee');
 const splitWrap = document.getElementById('splitDetailsWrap');
@@ -40,6 +21,29 @@ if (splittingFee) {
     splittingFee.addEventListener('change', setSplitVisibility);
 }
 
+// Conditional real estate details
+const ownRealEstate = document.getElementById('ownRealEstate');
+const ownRealEstateDetailsWrap = document.getElementById('ownRealEstateDetailsWrap');
+const ownRealEstateDetails = document.getElementById('ownRealEstateDetails');
+
+function setOwnRealEstateVisibility() {
+    if (!ownRealEstate) return;
+
+    const isYes = ownRealEstate.value === 'Yes';
+    ownRealEstateDetailsWrap.classList.toggle('d-none', !isYes);
+    if (isYes) {
+        ownRealEstateDetails.setAttribute('required', 'required');
+    } else {
+        ownRealEstateDetails.removeAttribute('required');
+        ownRealEstateDetails.value = '';
+        ownRealEstateDetails.classList.remove('is-invalid');
+    }
+}
+
+if (ownRealEstate) {
+    ownRealEstate.addEventListener('change', setOwnRealEstateVisibility);
+}
+
 // Bootstrap validation + form submit handler
 const form = document.getElementById('dealForm');
 const thankYouModalEl = document.getElementById('thankYouModal');
@@ -52,6 +56,7 @@ if (form && thankYouModalEl) {
 
         // Trigger conditional logic state
         setSplitVisibility();
+        setOwnRealEstateVisibility();
 
         if (!form.checkValidity()) {
             e.stopPropagation();
