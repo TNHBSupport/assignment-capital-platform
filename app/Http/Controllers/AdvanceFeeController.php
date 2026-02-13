@@ -105,7 +105,7 @@ class AdvanceFeeController extends Controller
 
         // Redirect back with success message
         return redirect()->route('advance-fee.show')
-            ->with('success', 'Your deal has been submitted successfully! Reference #' . $application->id);
+            ->with('success', 'Your deal has been submitted successfully! Property: ' . $application->propertyAddress);
     }
 
     /**
