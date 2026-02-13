@@ -80,7 +80,7 @@
             <textarea name="notes" id="notes" class="form-control @error('notes') is-invalid @enderror" rows="4" placeholder="Optional details: inspection issues, title issues, JV structure, etc.">{{ old('notes') }}</textarea>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-12">
             <label class="form-label req">Do you or anybody close to you own real estate (this will help us keep your assignment fee advance cost down)?</label>
             <select name="ownRealEstate" id="ownRealEstate" class="form-select @error('ownRealEstate') is-invalid @enderror" required>
                 <option value="" disabled {{ old('ownRealEstate') ? '' : 'selected' }}>Select…</option>
@@ -90,7 +90,7 @@
             <div class="invalid-feedback">Please select an option.</div>
         </div>
 
-        <div class="col-md-4 {{ old('ownRealEstate') === 'Yes' ? '' : 'd-none' }}" id="ownRealEstateDetailsWrap">
+        <div class="col-12 {{ old('ownRealEstate') === 'Yes' ? '' : 'd-none' }}" id="ownRealEstateDetailsWrap">
             <label class="form-label req">Add Details</label>
             <textarea name="ownRealEstateDetails" id="ownRealEstateDetails" class="form-control @error('ownRealEstateDetails') is-invalid @enderror" rows="3" placeholder="e.g., primary residence, rentals">{{ old('ownRealEstateDetails') }}</textarea>
             <div class="invalid-feedback">Please add details.</div>
