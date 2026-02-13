@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Models\DealApplication;
 
 class AdvanceFeeController extends Controller
 {
@@ -97,17 +97,14 @@ class AdvanceFeeController extends Controller
             $data['jvAgreement'] = $request->file('jvAgreement')->store('documents', 'public');
         }
 
-        // Log the submission (replace with database save or email notification)
-        Log::info('New Advance Fee Application', $data);
-
-        // TODO: Save to database
-        // DealApplication::create($data);
+        // Save to database
+        $application = DealApplication::create($data);
 
         // TODO: Send email notification
         // Mail::to('admin@example.com')->send(new NewDealApplicationMail($data));
 
         // Redirect back with success message
         return redirect()->route('advance-fee.show')
-            ->with('success', 'Your deal has been submitted successfully!');
+            ->with('success', 'Your deal has been submitted successfully! Reference #' . $application->id);
     }
 }
